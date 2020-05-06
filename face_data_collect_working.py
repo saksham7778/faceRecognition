@@ -34,8 +34,8 @@ while True:
 	#scaleFactor – Parameter specifying how much the image size is reduced at each image scale.
 	#minNeighbors – Parameter specifying how many neighbors each candidate rectangle should have to retain it.
 	print(faces)
-	# if len(faces)==0:
-	# 	continue
+	if len(faces)==0:
+	 	continue
 	
 # f is the array of (x,y,w,h) so we have w and h at the 2nd and 3rd indices so to get area we multiply f[2]*f[3]	
 	faces = sorted(faces,key=lambda f:f[2]*f[3])
@@ -66,6 +66,7 @@ while True:
 
 # Convert our face list array into a numpy array
 face_data = np.asarray(face_data)
+print(face_data.shape)
 face_data = face_data.reshape((face_data.shape[0],-1))
 print(face_data.shape)
 

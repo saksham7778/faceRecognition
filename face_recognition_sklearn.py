@@ -34,12 +34,12 @@ names = {} #Mapping btw id - name
 for fx in os.listdir(dataset_path):
 	if fx.endswith('.npy'):
 		#Create a mapping btw class_id and name
-		names[class_id] = fx[:-4]
-		# print("Loaded "+fx)
+		names[class_id] = fx[:-4] #removong .npy from file name 
+		print("Loaded "+fx)
 		data_item = np.load(dataset_path+fx)
-		# print(data_item.shape)       # contains size as say (26,30000) it means 26 rows and 30000 columns 
+		print(data_item.shape)       # contains size as say (26,30000) it means 26 rows and 30000 columns 
 		face_data.append(data_item)  #[[x*30,000] , [y*30,000] , ........]
-		# print(len(face_data));
+		#print(len(face_data));
 
 		#Create Labels for the class
 		target = class_id*np.ones((data_item.shape[0],))
@@ -74,9 +74,9 @@ while True:
 		#Get the face ROI
 		offset = 10
 		face_section = frame[y-offset:y+h+offset,x-offset:x+w+offset]
-		face_section = cv2.resize(face_section,(100,100))
+		face_section = cv2.resize(face_section,(100,100));print(face_section.shape);
 		hi=face_section.flatten().reshape(1,30000)
-		# print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@',hi.shape);
+		print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@',hi.shape);
 		#Predicted Label (out)
 		neigh = KNeighborsClassifier(n_neighbors=5)
 		neigh.fit(face_dataset,face_labels )

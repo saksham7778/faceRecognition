@@ -15,7 +15,7 @@ while True:
 	cv2.imshow("Frame",frame)
 	cv2.imshow("Face Section",gray_frame)
 
-	key_pressed = cv2.waitKey(1) & 0xFF
+	key_pressed = cv2.waitKey(1) & 0xFF;print(key_pressed)
 	if key_pressed == ord('q'):   #ord is a method that tells the ascii value to character.
 		break
 
